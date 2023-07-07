@@ -7,8 +7,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 {
     private static Player instance;
     public static Player Instance { get; private set;  }
- 
 
+    public event EventHandler OnPickedSomething;
     public static Player instanceField;
     public static Player GetInstanceField()
     {
@@ -182,6 +182,11 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.KitchenObject = kitchenObject;
+
+        if (kitchenObject != null)
+        {
+            OnPickedSomething?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public KitchenObject GetKitchenObject()
