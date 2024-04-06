@@ -68,10 +68,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void Update()
     {
-        if (!IsOwner)
-        {
-            return;
-        }
         HandleMovement();
         HandleInteractions();
     }
@@ -111,6 +107,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             SetSelectedCounter(null);
         }
     }
+ 
+
     private void HandleMovement()
     {
 
